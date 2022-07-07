@@ -1,0 +1,18 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 613 204" width="613" height="204">
+	<title>waterBare-svg</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m612.78 203.5h-612.28v-866.46h612.28z"/>
+		</clipPath>
+		<image width="384" height="169" id="img1" href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDM4NCAxNjkiIHdpZHRoPSIzODQiIGhlaWdodD0iMTY5Ij48ZGVmcz48Y2xpcFBhdGggY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIGlkPSJjcDEiPjxwYXRoIGQ9Im0zODMuNzggMzQyLjVoLTYxMi4yOHYtODY2LjQ2aDYxMi4yOHoiLz48L2NsaXBQYXRoPjwvZGVmcz48c3R5bGU+LmF7ZmlsbDojMjY3YTlmfTwvc3R5bGU+PGcgY2xpcC1wYXRoPSJ1cmwoI2NwMSkiPjxwYXRoIGNsYXNzPSJhIiBkPSJtMCAxNjguM2MwIDAgMzUuNS0yMCA1Mi41LTIxLjUgMTYuOS0xLjYgMTI5LjQtNDMuMyAxNTEtNzUuNiAyMS42LTMyLjMgODQuNy0zMy45IDk4LjYtMzguNSAxMy45LTQuNiA2My4yLTQxLjYgMTM3LjItMzUuNHYxNzF6Ii8+PC9nPjwvc3ZnPg=="/>
+		<image width="613" height="195" id="img2" href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDYxMyAxOTUiIHdpZHRoPSI2MTMiIGhlaWdodD0iMTk1Ij48ZGVmcz48Y2xpcFBhdGggY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIGlkPSJjcDEiPjxwYXRoIGQ9Im02MTIuNzggMzY4LjVoLTYxMi4yOHYtODY2LjQ2aDYxMi4yOHoiLz48L2NsaXBQYXRoPjwvZGVmcz48c3R5bGU+LmF7ZmlsbDojMTAyZTQyfTwvc3R5bGU+PGcgY2xpcC1wYXRoPSJ1cmwoI2NwMSkiPjxwYXRoIGNsYXNzPSJhIiBkPSJtLTQwLjYgMjAuMmMwIDAgMTAzLjMtMzUuNCAxNTUuNy0xMi4zIDUyLjQgMjMuMSA5OC40IDc1LjUgMTEzLjkgNzUuNSAxNS41IDAgMjEuNy0xLjYgMzguNiAxMC44IDE3IDEyLjMgNTAuOSAzMC44IDcwLjkgMzUuNCAyMCA0LjYgMTI5IDAgMTUxLjYgMTMuOSAyMi41IDEzLjggNTggMzUuNCA3MC4zIDM1LjQgMTIuMyAwIDY5LjMgMCA2OS4zIDB2MTUuNGgtNjcwLjN6Ii8+PC9nPjwvc3ZnPg=="/>
+	</defs>
+	<style>
+	</style>
+	<g id="Clip-Path" clip-path="url(#cp1)">
+		<g id="Layer">
+		</g>
+		<use id="blueMount" href="#img1" transform="matrix(1,0,0,1,229,35)"/>
+		<use id="navyMount" href="#img2" transform="matrix(1,0,0,1,0,9)"/>
+	</g>
+</svg>

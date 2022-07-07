@@ -1,0 +1,34 @@
+/* Basic styling */
+
+:root {
+  /* Colors */
+  --black: #09090c;
+  --white: #fff;
+  --cardBack: #DFDBCF;
+  --background: rgba(137, 171, 245, 0.37);
+  --primary: #F45936;
+  --white: #fff;
+  --grey: #b3b3b3;
+  --blueVariant: #ebf3f9;
+  --blue: #a3bccf;
+  --whiteVariant: rgba(255,255,255,0.3);
+  --shadow: rgba(0,0,0,0.5);
+}
+
+
+html {
+  overflow: hidden;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--white);
+  font-family: "Poppins", sans-serif;
+}
