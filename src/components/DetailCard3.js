@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import sun from "../assets/shintu/sun.svg";
+import tree from "../assets/shintu/treeL.svg";
+import mountains from "../assets/shintu/mountains3.svg";
+import { VerticalText } from "./DetailCard";
 import pattern from "../assets/shintu/pattern.svg";
-import mountains from "../assets/shintu/mountains.svg";
-import water from "../assets/shintu/waterBare.svg";
+
+
 
 const CardBack = styled.div`
   background-color: var(--cardBack);
@@ -12,17 +15,15 @@ const CardBack = styled.div`
   margin-top: 1rem;
   &:hover {
       border: 2px solid var(--primary);
-      padding: 2px;
     }
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   img {
-    left: 10%;
-    top: 10%;
+    left: 25%;
+    top: 40%;
     width: 58%;
-    height: auto;
     position: relative;
   }
 
@@ -32,15 +33,21 @@ const CardBack = styled.div`
 const CardTop = styled.div`
   background-color: transparent;
   height: 200%;
-  width: 180%;
-  padding:1.3rem;
+  width: 150%;
+  margin-bottom: 0rem;
+  img {
+    left: 0%;
+    top: 0%;
+    width: 66%;
+    position: absolute;
+  }
 
-  position: relative;
+  position: absolute;
 `;
 
 const CardBottomMiddle = styled.div`
   background-color: transparent;
-  height: 42%;
+  height: 32%;
   width: 100%;
   margin-bottom:-8%;
   img {
@@ -54,47 +61,50 @@ const CardBottomMiddle = styled.div`
 `;
 
 const CardBottom = styled.div`
-  background-color: transparent;
-  height: 30%;
+  ${'' /* background-color: var(--black); */}
   width: 100%;
+  bottom:0%;
   img {
     left: 0%;
     width: 100%;
-    height: 100%;
+    margin-bottom:-2%;
+
     position: relative;
   }
-
-  position: relative;
+  position: absolute;
 `;
 
-export const VerticalText = props => (
+export const HorizontalText = props => (
   <div style={{ 
+    width:200,
+    // backgroundColor: 'white',
     flex: 1, 
-    flexDirection: 'column', 
+    flexDirection: 'row', 
     position:'absolute',
     right:props.right,
     top:props.top
     }}>
-      {props.text.split('').map(char => <h3>{char}</h3>)}
+       <h3>{props.text}</h3>
   </div>
 );
 
-export default function DetailCard() {
-    let right = 30;
+
+export default function DetailCard3() {
+    let right = 10;
 
     return (
     <CardBack>
-        
         <img src={sun} alt="sun" ></img>
-        <VerticalText text={'WHO'} right={right} top={30}></VerticalText>
-        <VerticalText text={'WE'} right={right} top={100}></VerticalText>
-        <VerticalText text={'ARE'} right={right+2} top={150}></VerticalText>
-        <CardTop></CardTop>
-        <CardBottomMiddle>
-          <img src={mountains} alt="sun" ></img>
-        </CardBottomMiddle>
+        <VerticalText text={'WHAT'} right={right} top={30}></VerticalText>
+        <VerticalText text={'WE'} right={right} top={130}></VerticalText>
+        <VerticalText text={'DID'} right={right} top={190}></VerticalText>
+
+        <CardTop>
+        <img src={tree} alt="sun" ></img>
+        </CardTop>
+
         <CardBottom>
-        <img src={water} alt="sun" ></img>
+        <img src={mountains} alt="sun" ></img>
         </CardBottom>
     </CardBack>
     );

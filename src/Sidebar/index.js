@@ -1,311 +1,123 @@
-import React, { useState } from "react";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@material-ui/icons/Menu';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import ButtonBase from '@mui/material/ButtonBase';
+import logo from '../assets/logoB.svg'
 
-//All the svg files
-import logo from "../assets/malumelogo.svg";
-import Home from "../assets/home-solid.svg";
-import Team from "../assets/social.svg";
-import Calender from "../assets/sceduled.svg";
-import Projects from "../assets/starred.svg";
-import Documents from "../assets/draft.svg";
-import PowerOff from "../assets/power-off-solid.svg";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const Container = styled.div`
-  position: fixed;
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#73C496',
+    },
+  },
+});
 
-  .active {
-    border-right: 4px solid var(--white);
-    ${'' /* background-color: var(--grey); */}
-    border-radius: 40%;
+const pages = ['About us', 'Contact us', 'Find a Club', 'Become a Driver', 'Fleet', 'Cities'];
 
-    img {
-      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
-        brightness(103%) contrast(103%);
-    }
-  }
-`;
+const ResponsiveAppBar = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-const Button = styled.button`
-  background-color: var(--primary);
-  border: none;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  margin: 0.5rem 0 0 0.5rem;
-  cursor: pointer;
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-  position: relative;
 
-  &::before,
-  &::after {
-    content: "";
-    background-color: var(--white);
-    height: 2px;
-    width: 1rem;
-    position: absolute;
-    transition: all 0.3s ease;
-  }
-
-  &::before {
-    top: ${(props) => (props.clicked ? "1.5" : "1rem")};
-    transform: ${(props) => (props.clicked ? "rotate(135deg)" : "rotate(0)")};
-  }
-
-  &::after {
-    top: ${(props) => (props.clicked ? "1.2" : "1.5rem")};
-    transform: ${(props) => (props.clicked ? "rotate(-135deg)" : "rotate(0)")};
-  }
-`;
-
-const SidebarContainer = styled.div`
-  background-color: var(--primary);
-  width: 3.9rem;
-  height: 80vh;
-  margin-top: 1rem;
-  border-radius: 0 30px 30px 0;
-  padding: 1rem 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  position: relative;
-`;
-
-const Logo = styled.div`
-  width: 5rem;
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-`;
-
-const SlickBar = styled.ul`
-  color: var(--white);
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--primary);
-
-  padding: 2rem 0;
-
-  position: absolute;
-  top: 6rem;
-  left: 0;
-
-  width: ${(props) => (props.clicked ? "12rem" : "3.5rem")};
-  transition: all 0.5s ease;
-  border-radius: 0 30px 30px 0;
-`;
-
-const Item = styled(NavLink)`
-  text-decoration: none;
-  color: var(--white);
-  width: 100%;
-  padding: 1rem 0;
-  cursor: pointer;
-
-  display: flex;
-  padding-left: 1.3rem;
-
-    
-
-  &:hover {
-    border-right: 4px solid var(--white);
-
-    img {
-      filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(93deg)
-        brightness(103%) contrast(103%);
-    }
-  }
-
-  img {
-    width: 1.2rem;
-    height: auto;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
-        brightness(103%) contrast(103%);
-  }
-`;
-
-const Text = styled.span`
-  width: ${(props) => (props.clicked ? "100%" : "0")};
-  overflow: hidden;
-  margin-left: ${(props) => (props.clicked ? "1.5rem" : "0")};
-  transition: all 0.3s ease;
-`;
-
-const Profile = styled.div`
-  width: ${(props) => (props.clicked ? "12rem" : "3rem")};
-  height: 3rem;
-
-  padding: 0.5rem 1rem;
-  border: 5px solid var(--primary);
-  border-radius: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: ${(props) => (props.clicked ? "9rem" : "0")};
-
-  background-color: var(--blueVariant);
-  color: var(--black);
-
-  transition: all 0.3s ease;
-
-  img {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-
-    &:hover {
-      border: 2px solid var(--white);
-      padding: 2px;
-    }
-  }
-`;
-
-const Details = styled.div`
-  display: ${(props) => (props.clicked ? "flex" : "none")};
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Name = styled.div`
-  padding: 0.5rem 1.5rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  h4 {
-    display: inline-block;
-  }
-
-  a {
-    font-size: 0.7rem;
-    text-decoration: none;
-    color: var(--grey);
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
-const Logout = styled.button`
-  border: none;
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-right:1rem;
-
-  background-color: transparent;
-
-  img {
-    width: 80%;
-    height: auto;
-    ${'' /* filter: invert(15%) sepia(70%) saturate(6573%) hue-rotate(2deg)
-      brightness(100%) contrast(126%); */}
-    transition: all 0.3s ease;
-    &:hover {
-      border: none;
-      padding: 0;
-      opacity: 0.5;
-    }
-  }
-`;
-
-const Sidebar = () => {
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
-
-  const [profileClick, setprofileClick] = useState(false);
-  const handleProfileClick = () => setprofileClick(!profileClick);
 
   return (
-    <Container>
-      <Button clicked={click} onClick={() => handleClick()}>
-      </Button>
-      <SidebarContainer>
-        <Logo>
-          <img src={logo} alt="logo" />
-        </Logo>
-        <SlickBar clicked={click}>
-          <Item
-            onClick={() => setClick(false)}
-            exact
-            activeClassName="active"
-            to="/"
-          >
-            <img src={Home} alt="Home" />
-            <Text clicked={click}>Home</Text>
-          </Item>
+    <ThemeProvider theme={theme}>
 
-          <Item
-            onClick={() => setClick(false)}
-            activeClassName="active"
-            to="/vehicles"
-          >
-            <img src={Calender} alt="Vehicles" />
-            <Text clicked={click}>Vehicles</Text>
-          </Item>
+    <AppBar position="static" elevation={0} style={{ background: 'var(--primary)',boxShadow: 'none' }}>
+      <Container maxWidth="xl" justifyContent="space-between" >
+        <Toolbar disableGutters>
+        <ButtonBase sx={{ width: 80, height: 80 }}>
+        <img src={logo} width={70} height={70} alt="logo" />
+        </ButtonBase>
 
-          <Item
-            onClick={() => setClick(false)}
-            activeClassName="active"
-            to="/drivers"
-          >
-            <img src={Team} alt="Drivers" />
-            <Text clicked={click}>Drivers</Text>
-          </Item>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="primary"
+            >
+            <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
 
-          <Item
-            onClick={() => setClick(false)}
-            activeClassName="active"
-            to="/accounts"
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 500,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
           >
-            <img src={Documents} alt="Accounts" />
-            <Text clicked={click}>Accounts</Text>
-          </Item>
-          <Item
-            onClick={() => setClick(false)}
-            activeClassName="active"
-            to="/settings"
-          >
-            <img src={Projects} alt="Settings" />
-            <Text clicked={click}>Settings</Text>
-          </Item>
-        </SlickBar>
+            SHINTU
+          </Typography>
 
-        <Profile clicked={profileClick}>
-          <img
-            onClick={() => handleProfileClick()}
-            src="https://picsum.photos/200"
-            alt="Profile"
-          />
-          <Details clicked={profileClick}>
-            <Name>
-              <h4>Mfun&nbsp;Doe</h4>
-              <a href="/#">view&nbsp;profile</a>
-            </Name>
-
-            <Logout>
-              <img src={PowerOff} alt="logout" />
-            </Logout>
-          </Details>
-        </Profile>
-      </SidebarContainer>
-    </Container>
+          {/* <Box sx={{ flexGrow: 1,   position: 'absolute', right:0, display: { xs: 'none', md: 'flex' }}}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'black', display: 'block', textTransform: 'none',fontWeight: 200}}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box> */}
+        </Toolbar>
+      </Container>
+    </AppBar>
+    </ThemeProvider>
   );
 };
-
-export default Sidebar;
+export default ResponsiveAppBar;

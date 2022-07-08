@@ -4,11 +4,13 @@
   /* Colors */
   --black: #09090c;
   --white: #fff;
-  --cardBack: #DFDBCF;
+  --cardBack: #DFDBD0;
+  --cardPattern: #D6CDC4;
   --background: rgba(137, 171, 245, 0.37);
   --primary: #F45936;
   --white: #fff;
   --grey: #b3b3b3;
+  --navy: #102E42;
   --blueVariant: #ebf3f9;
   --blue: #a3bccf;
   --whiteVariant: rgba(255,255,255,0.3);

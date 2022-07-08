@@ -7,6 +7,7 @@ import Accounts from "./Pages/Accounts";
 import Settings from "./Pages/Settings";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
+import "@fontsource/montserrat/600.css";
 
 const Pages = styled.div`
   width: 100vw;
@@ -30,8 +31,11 @@ const Pages = styled.div`
   }  
   
   h3 {
-    font-size: 0.8rem;
-    background: var(--grey);
+    font-size: 1rem;
+    font-weight:600;
+    font-family: "Montserrat";
+    letter-spacing: 0.2rem;
+    background: var(--navy);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
